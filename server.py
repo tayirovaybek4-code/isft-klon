@@ -25,9 +25,10 @@ from urllib.parse import urlsplit
 from sheets_sync import SheetsSync, configure_sheets
 
 ROOT = Path(__file__).resolve().parent
-DB = ROOT / "isft.db"
+DATA = Path(os.environ["ISFT_DATA_DIR"]).expanduser().resolve() if os.environ.get("ISFT_DATA_DIR") else ROOT
+DB = DATA / "isft.db"
 STATIC = ROOT / "static"
-UPLOAD = ROOT / "uploads"
+UPLOAD = DATA / "uploads"
 PROGRAMS = (
     "Axborot tizimlari va texnologiyalari", "Iqtisodiyot", "Marketing",
     "Bank ishi", "Axborot xavfsizligi", "Xalqaro munosabatlar", "Menejment",
@@ -113,7 +114,7 @@ def first_admin_password():
 
 
 def init():
-    UPLOAD.mkdir(exist_ok=True)
+    UPLOAD.mkdir(parents=True, exist_ok=True)
     with connect() as connection:
         connection.execute("PRAGMA journal_mode = WAL")
         connection.executescript("""
@@ -704,7 +705,8 @@ def main():
     parser.add_argument("--configure-sheets", action="store_true", help="Google Sheets ulanishini sozlash")
     args = parser.parse_args()
     if args.configure_sheets:
-        return configure_sheets(ROOT / "sheets.local.json")
+        DATA.mkdir(parents=True, exist_ok=True)
+        return configure_sheets(DATA / "sheets.local.json")
     host = os.getenv("ISFT_HOST", "127.0.0.1")
     port = os.getenv("PORT", "8000")
     try:
@@ -713,7 +715,7 @@ def main():
         raise SystemExit(f"Server ochilmadi ({host}:{port}). Portni tekshiring. {exc}") from exc
     with server:
         init()
-        server.sheets = SheetsSync(ROOT / "sheets.local.json", connect)
+        server.sheets = SheetsSync(DATA / "sheets.local.json", connect)
         server.sheets.start()
         address = f"http://{host}:{server.server_port}"
         print(f"Sayt: {address}/\nAdmin: {address}/admin.html\nTo‘xtatish: Ctrl+C", flush=True)
