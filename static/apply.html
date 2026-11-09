@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ISFT universiteti, ta’lim yo‘nalishlari va onlayn qabul.">
+  <title>Onlayn qabul — ISFT</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#public">Asosiy mazmunga o‘tish</a>
+  <header>
+    <a class="public-logo" id="logo" href="/" aria-label="ISFT bosh sahifasi">
+      <span class="mark" aria-hidden="true">◈</span>
+      <span data-site-name>ISFT<small>UNIVERSITETI</small></span>
+    </a>
+    <button class="mobile-menu" id="mobile-menu" type="button"
+            aria-expanded="false" aria-controls="public-nav">Menyu</button>
+    <nav class="public-nav" id="public-nav" aria-label="Asosiy menyu">
+      <a href="/">Bosh sahifa</a>
+      <a href="/about.html">Universitet</a>
+      <a href="/programs.html">Yo‘nalishlar</a>
+      <a href="/news.html">Yangiliklar</a>
+      <a href="/apply.html">Qabul</a>
+      <a href="/contact.html">Aloqa</a>
+    </nav>
+    <a class="btn" href="/apply.html">Ariza topshirish →</a>
+  </header>
+  <main id="public">
+    <section class="page-hero">
+      <p class="eyebrow">QABUL</p>
+      <h1>Onlayn ariza topshirish</h1>
+      <p>Yulduzcha bilan belgilangan maydonlarni to‘ldiring.</p>
+    </section>
+    <section class="form-wrap public-form" aria-label="Qabul arizasi">
+      <form id="apply-form">
+        <fieldset id="apply-fields" disabled>
+          <legend>Abituriyent ma’lumotlari</legend>
+          <div class="apply-grid">
+            <label>Ism * <input name="first_name" autocomplete="given-name" required minlength="2" maxlength="100"></label>
+            <label>Familiya * <input name="last_name" autocomplete="family-name" required minlength="2" maxlength="100"></label>
+            <label>Otasining ismi <input name="father_name" maxlength="100"></label>
+            <label>Telefon * <input name="phone" type="tel" autocomplete="tel" placeholder="+998901234567"
+                                    required minlength="9" maxlength="22"></label>
+            <label>Tug‘ilgan sana <input name="birth_date" type="date" autocomplete="bday"></label>
+            <label>Ta’lim shakli
+              <select name="study_type">
+                <option value="">Tanlang</option>
+                <option>Kunduzgi</option>
+                <option>Sirtqi</option>
+                <option>Kechki</option>
+              </select>
+            </label>
+          </div>
+          <label>Yo‘nalish *
+            <select name="program_id" id="program-select" required>
+              <option value="">Yo‘nalishlar yuklanmoqda…</option>
+            </select>
+          </label>
+          <label class="check consent">
+            <input name="consent" type="checkbox" value="yes" required>
+            Ma’lumotlarim arizani ko‘rib chiqish uchun ishlatilishiga roziman.
+          </label>
+          <button class="btn" type="submit">Arizani yuborish</button>
+        </fieldset>
+        <p id="apply-result" role="status" aria-live="polite" tabindex="-1">Yo‘nalishlar yuklanmoqda…</p>
+      </form>
+      <noscript><p class="error">Ariza yuborish uchun JavaScript’ni yoqing.</p></noscript>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <div>
+        <b class="public-logo"><span class="mark" aria-hidden="true">◈</span><span data-site-name>ISFT</span></b>
+        <small>Zamonaviy ta’lim · katta imkoniyatlar</small>
+      </div>
+      <div>
+        <b>Universitet</b>
+        <a href="/about.html">Biz haqimizda</a>
+        <a href="/programs.html">Yo‘nalishlar</a>
+        <a href="/news.html">Yangiliklar</a>
+      </div>
+      <div>
+        <b>Qabul</b>
+        <a href="/apply.html">Ariza topshirish</a>
+        <a href="/contact.html">Bog‘lanish</a>
+      </div>
+      <div>
+        <b>Ma’lumot</b>
+        <a href="/admin.html">Admin panel</a>
+        <small data-footer-text>© ISFT Universiteti</small>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

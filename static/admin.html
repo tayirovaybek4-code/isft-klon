@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISFT PRO — Admin</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body class="admin">
+  <aside id="admin-sidebar" hidden>
+    <div class="brand">◈ ISFT <small>Admin panel</small></div>
+    <nav id="sidebar" aria-label="Admin bo‘limlari"></nav>
+  </aside>
+  <div class="workspace">
+    <div class="topbar">
+      <strong id="heading">Admin panel</strong>
+      <a href="/" target="_blank" rel="noopener">Saytni ko‘rish ↗</a>
+      <button class="secondary" type="button" id="logout" hidden>Chiqish</button>
+    </div>
+    <main id="panel">
+      <p class="loading">Yuklanmoqda…</p>
+      <noscript><p class="error">Admin panel uchun JavaScript’ni yoqing.</p></noscript>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
