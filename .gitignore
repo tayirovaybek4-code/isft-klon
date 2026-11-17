@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+/uploads/
+/sheets.local.*
+/google-client.local.json
+*.pem
+*.key

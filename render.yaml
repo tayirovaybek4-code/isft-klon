@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: oybek-isft
+    runtime: python
+    plan: free
+    buildCommand: python -m py_compile server.py admissions.py exam_seed.py sheets_sync.py
+    startCommand: python -u server.py
+    healthCheckPath: /
+    envVars:
+      - key: ISFT_HOST
+        value: 0.0.0.0
+      - key: ISFT_HTTPS
+        value: "1"
+      - key: ADMIN_PASSWORD
+        generateValue: true
